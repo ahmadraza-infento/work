@@ -1,0 +1,81 @@
+
+Convolutional Neural Network :- 
+We use deep learning based Convolutional Neural Network
+in our experiments. Use of Convolutional Neural Networks as
+feature extractor and image classifier is very famous. 
+
+CNN is mainly divided into two parts, the feature extractor and a classifier. 
+In first part convolutional and pooling layers are used to extract features from the image.
+At convolutional layer image is convolved with filters and
+pooling layer reduce the spatial size of image representation
+and in the result fewer parameters required to classify the
+character which helps to avoid over fitting. In the second
+part, fully connected layers are used to classify the images.
+At each layer output of convolutional layers is passed to
+an activation function to add non-linearity in the model.
+
+Traditionally, sigmoid is used as activation function but in the
+deeper network it decreases the gradient almost approaching
+to zero which causes the vanishing gradient problem, due to
+which weights at earlier layers stop updating and training of
+CNN suffers. To overcome this situation a Rectified Linear
+Unit (RELU) is used nowadays, which simply results in zero 
+if the input is negative and input otherwise.
+
+
+
+In our experiments, I have trained CNN on 4 different type of datasets. 
+We have less number of samples in our datasets. I trained CNN but as we know,
+deep learning classifiers needs large corpus of dataset to classify the images. 
+So, I have applied different augmentation techniques to increase the size of dataset. 
+
+The performance of CNN on our datasets is in table below:
+
+Forniceal
+# Neurons	epochs	# samples (each class) 	Accuracy	Comment
+2048		50	1000			83.72
+1024		50	1000			88.37
+512		50	1000			79.06
+
+512		50	1500			79.06
+1024		50	1500			86.04
+2048		50	1500			88.37
+4096		50	1500			79.69
+
+Original Dataset
+# Neurons	epochs	# samples (each class) 	Accuracy	Comment
+2048, 		10 	1000 			79.54 		after 10 epochs, performance reduced, seems overfitting
+1024		50	1000			81.81
+512		50	1000			79.54
+
+512		50	1500			72.72		overfitting after 10 epochs
+1024		50	1500			77.27		overfitting after 10 epochs
+2048		50	1500			75.0		overfitting 
+
+512		50	500			84.09 
+1024		50	500			84.09 		remain same
+2048		50	500			75.0		over fitting after 25 epochs 
+
+Palpebral Dataset
+# Neurons	epochs	# samples (each class) 	Accuracy	Comment
+512		50	1000			81.39
+1024		50	1000			83.72
+2048		50	1000			76.74
+
+1024		50	1500			74.41
+2048		50	1500			86.04
+4096		50	1500			81.32
+
+Palpebral
+# Neurons	epochs	# samples (each class) 	Accuracy	Comment
+512		50	1000			83.29
+1024		50	1000			93.18
+2048		50	1000			80.54
+
+1024		50	1500			73.21
+2048		50	1500			84.05
+4096		50	1500			78.42
+
+
+The best performance is of CNN at Palpebral dataset with accuracy of 93.18.
+

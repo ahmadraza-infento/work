@@ -1,0 +1,23 @@
+
+06-06-2020
+I have completed study of data. 
+-> Next I have trained classifiers on numeric data available in files. 
+-> There were some typos, like ',' was placed instead of '.' in Hgb column. I have replaced these ',' with '.'
+-> There was a row containing a none value, so I dropped that row and finally I have 217 records
+-> I have replaced 'M' & 'N' with 0 & 1 to feed to classifiers. Similarly, have replaced 'No anemia' or 'No anemia' by 0 & 'Anemia' by 1 in Anemia column
+-> The data columns I used are Hgb, Age & Gender. The column to predict was Anemia.
+-> I have performed some data analysis which depict that there is high correlation betwen predictor and predictand columns   
+-> I used 151 samples as training set and 66 samples as testing set
+-> I have trained SVM, KNN, Random Forest, MLP and tensorflow based ANN on training set and tested the performance of models on test set. 
+
+The performance of trained models on test set is as follows:
+
+- ANN 97%
+- SVM 98 %
+- KNN 98%
+- Random Forest 98%
+- MLP 97%
+
+Both Neural Networks low performance as compared to machine learning classifiers but overall performance is very promising. 
+
+Next, I am going to start work on classification using image data with opencv based feature extractors and our baseline classifiers as our plan 

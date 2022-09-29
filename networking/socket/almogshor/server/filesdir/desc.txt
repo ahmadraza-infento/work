@@ -1,0 +1,5 @@
+Open Internet Explorer
+> Tools > Internet Options > Connections tab > LAN settings > check -> Use a proxy server for your LAN ... > Set Address: 127.0.0.1 > Set Port: 8596
+> Now run proxyserver.py -> python proxyserver.py
+> open your browser and type http website eg: http://epaper.pknewspapers.com/daily-dunya.html   -> It will look for website and will store in cache
+> Then search: http://127.0.0.1:8596/epaper.pknewspapers.com -> it will return back the cache file

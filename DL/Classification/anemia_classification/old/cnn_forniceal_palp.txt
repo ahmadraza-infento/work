@@ -1,0 +1,163 @@
+input_shape = X_test[0].shape
+drop_rate= 0.
+k3=(3, 3)
+k5=(5, 5)
+k7= (7, 7)
+model = Sequential(layers=[
+    #1st Convolutional layer
+    Conv2D(filters=256, kernel_size=k5, padding='same', activation='relu', input_shape=input_shape),  
+    BatchNormalization(),
+    MaxPooling2D(pool_size=(3, 3), strides=None, padding='valid', data_format=None),
+    Dropout(rate=drop_rate),
+    #2nd Convolutional layer
+    Conv2D(filters=128, kernel_size=k3, padding='same', activation='relu'), #shape=58-3+1=(56, 56, 128)
+    BatchNormalization(),
+    Dropout(rate=drop_rate),
+    #3rd Convolutional layer
+    Conv2D(filters=128, kernel_size=k3, padding='same', activation='relu'), #shape=58-3+1=(56, 56, 128)
+    BatchNormalization(),
+    MaxPooling2D(pool_size=(3, 3), strides=None, padding='valid', data_format=None),
+    Dropout(rate=drop_rate),
+    #4th Convolutional layer
+    # Conv2D(filters=128, kernel_size=k3, padding='same', activation='relu'), #shape=58-3+1=(56, 56, 128)
+    # BatchNormalization(),
+    # Dropout(rate=drop_rate),
+    #5 Convolutional layer
+    # Conv2D(filters=f, kernel_size=k, padding='same', activation='relu'), #shape=58-3+1=(56, 56, 128)
+    # BatchNormalization(),
+    # MaxPooling2D(pool_size=(3, 3), strides=None, padding='valid', data_format=None),
+    # Dropout(rate=drop_rate),
+    #6 Convolutional layer
+    # Conv2D(filters=f, kernel_size=k, padding='same', activation='relu'), #shape=58-3+1=(56, 56, 128)
+    # BatchNormalization(),
+    #MaxPooling2D(pool_size=(3, 3), strides=None, padding='valid', data_format=None),
+    #Dropout(rate=drop_rate),
+    #6th Convolutional layer
+    #Conv2D(filters=f, kernel_size=k, padding='valid', activation='relu'), #shape=40-11+1=(30, 30, 5)
+    #BatchNormalization(),
+    #Dropout(drop_rate),
+    
+    #Flat layer
+    Flatten(), #32*32*5=5120 neurons
+    
+    #6th Layer
+    Dense(512, activation='relu'),
+    BatchNormalization(),
+    Dropout(drop_rate),
+    
+    Dense(number_classes, activation='softmax') # number_classes neurons
+])
+
+81.39_40
+
+input_shape = X_test[0].shape
+drop_rate= 0.
+k3=(3, 3)
+k5=(5, 5)
+k7= (7, 7)
+model = Sequential(layers=[
+    #1st Convolutional layer
+    Conv2D(filters=256, kernel_size=k5, padding='same', activation='relu', input_shape=input_shape),  
+    BatchNormalization(),
+    MaxPooling2D(pool_size=(3, 3), strides=None, padding='valid', data_format=None),
+    Dropout(rate=drop_rate),
+    #2nd Convolutional layer
+    Conv2D(filters=128, kernel_size=k3, padding='same', activation='relu'), #shape=58-3+1=(56, 56, 128)
+    BatchNormalization(),
+    Dropout(rate=drop_rate),
+    #3rd Convolutional layer
+    Conv2D(filters=128, kernel_size=k3, padding='same', activation='relu'), #shape=58-3+1=(56, 56, 128)
+    BatchNormalization(),
+    MaxPooling2D(pool_size=(3, 3), strides=None, padding='valid', data_format=None),
+    Dropout(rate=drop_rate),
+    #4th Convolutional layer
+    # Conv2D(filters=128, kernel_size=k3, padding='same', activation='relu'), #shape=58-3+1=(56, 56, 128)
+    # BatchNormalization(),
+    # Dropout(rate=drop_rate),
+    #5 Convolutional layer
+    # Conv2D(filters=f, kernel_size=k, padding='same', activation='relu'), #shape=58-3+1=(56, 56, 128)
+    # BatchNormalization(),
+    # MaxPooling2D(pool_size=(3, 3), strides=None, padding='valid', data_format=None),
+    # Dropout(rate=drop_rate),
+    #6 Convolutional layer
+    # Conv2D(filters=f, kernel_size=k, padding='same', activation='relu'), #shape=58-3+1=(56, 56, 128)
+    # BatchNormalization(),
+    #MaxPooling2D(pool_size=(3, 3), strides=None, padding='valid', data_format=None),
+    #Dropout(rate=drop_rate),
+    #6th Convolutional layer
+    #Conv2D(filters=f, kernel_size=k, padding='valid', activation='relu'), #shape=40-11+1=(30, 30, 5)
+    #BatchNormalization(),
+    #Dropout(drop_rate),
+    
+    #Flat layer
+    Flatten(), #32*32*5=5120 neurons
+    
+    #6th Layer
+    Dense(1024, activation='relu'),
+    BatchNormalization(),
+    Dropout(drop_rate),
+    
+    Dense(number_classes, activation='softmax') # number_classes neurons
+])
+
+83.72_50
+
+
+
+input_shape = X_test[0].shape
+drop_rate= 0.
+k3=(3, 3)
+k5=(5, 5)
+k7= (7, 7)
+model = Sequential(layers=[
+    #1st Convolutional layer
+    Conv2D(filters=256, kernel_size=k5, padding='same', activation='relu', input_shape=input_shape),  
+    BatchNormalization(),
+    MaxPooling2D(pool_size=(3, 3), strides=None, padding='valid', data_format=None),
+    Dropout(rate=drop_rate),
+    #2nd Convolutional layer
+    Conv2D(filters=128, kernel_size=k3, padding='same', activation='relu'), #shape=58-3+1=(56, 56, 128)
+    BatchNormalization(),
+    Dropout(rate=drop_rate),
+    #3rd Convolutional layer
+    Conv2D(filters=128, kernel_size=k3, padding='same', activation='relu'), #shape=58-3+1=(56, 56, 128)
+    BatchNormalization(),
+    MaxPooling2D(pool_size=(3, 3), strides=None, padding='valid', data_format=None),
+    Dropout(rate=drop_rate),
+    #4th Convolutional layer
+    # Conv2D(filters=128, kernel_size=k3, padding='same', activation='relu'), #shape=58-3+1=(56, 56, 128)
+    # BatchNormalization(),
+    # Dropout(rate=drop_rate),
+    #5 Convolutional layer
+    # Conv2D(filters=f, kernel_size=k, padding='same', activation='relu'), #shape=58-3+1=(56, 56, 128)
+    # BatchNormalization(),
+    # MaxPooling2D(pool_size=(3, 3), strides=None, padding='valid', data_format=None),
+    # Dropout(rate=drop_rate),
+    #6 Convolutional layer
+    # Conv2D(filters=f, kernel_size=k, padding='same', activation='relu'), #shape=58-3+1=(56, 56, 128)
+    # BatchNormalization(),
+    #MaxPooling2D(pool_size=(3, 3), strides=None, padding='valid', data_format=None),
+    #Dropout(rate=drop_rate),
+    #6th Convolutional layer
+    #Conv2D(filters=f, kernel_size=k, padding='valid', activation='relu'), #shape=40-11+1=(30, 30, 5)
+    #BatchNormalization(),
+    #Dropout(drop_rate),
+    
+    #Flat layer
+    Flatten(), #32*32*5=5120 neurons
+    
+    #6th Layer
+    Dense(512, activation='relu'),
+    BatchNormalization(),
+    Dropout(drop_rate),
+    
+    Dense(number_classes, activation='softmax') # number_classes neurons
+])
+
+76.74_30
+
+
+
+- 1024, 40 e, 1500 aug -> 74.41
+- 2048, 50 e, 1500 aug -> 86.04
+- 4096, 40 e, 1500 aug -> 81.32

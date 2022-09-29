@@ -1,0 +1,25 @@
+Project Plan
+
+-> We will study all of our combinations on all 4 types of images.
+
+-> feature extractors -> hog, surf, other standard feature extractors ...
+
+-> Machine Learning Classifiers -> Random Forest, KNN, SVM, MLP (ANN),
+
+-> We will analyze the performance of all these classifiers against these feature extractor.
+
+-> We will compare the performance of our ML algorithms against differnt feature extractors
+
+To apply deep learning like CNN
+
+-> We will augment the dataset to increase the number of samples in our data
+
+-> We will train different variations of CNN on this augmented datasets
+
+-> We will compare the performance of our different variations of CNN
+
+-> We will compare the performance of ML & DL model
+
+-> Finally we will develop our fianl model, an independent model or combind model of best performing algorithms.
+
+-> We will create API for our final soultion and provide endpoint for public to use our solution.

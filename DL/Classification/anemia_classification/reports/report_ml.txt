@@ -1,0 +1,141 @@
+To train machine learning based algorithms on images, we need to extract key features
+from images to fed to the classifier. In my study, I am using 4 machine learning based 
+classifiers to classify images into two classes. I have studied 4 different feature extractors
+to describe the images. The feature extractors are: Histogram of Local Binary Patterns (LBPH),
+Scale-Invariant Feature Transform (SIFT), Histogram of Oriented Gradient and 
+Oriented FAST and Rotated BRIEF(ORB). 
+
+
+The brief description of these feature extractors is as follows:
+SIFT:- 
+	SIFT is scale and rotation invarient algorithm which makes it applicable in real time 
+scnerios. It detects and describe local features in the image and can generate many features
+for even smaller objects. Its process includes Difference of Gaussians (DoG) Space Generation,
+Keypoints Detection and Feature Description. The described features are bassically fed to the 
+classifer and trained on it. 
+
+HOG:- 
+	HOG is another famous feature description technique mostly used in object detection applications
+from images. It basically counts the occurence of gradient orientation in specific regions of
+the image and distributes this computation into specified number of bins, making it histogram of
+oriented gradients in the image. 
+
+ORB:-
+	ORB is an efficient & viable alternative to SIFT & SURF feature descriptors because both
+these algorithms are patened and are not avaialbe freely. ORB performs as well as SIFT does and
+performs better than SURF with faster computation as compare to SIFT & SURF. ORB is built upon 
+FAST key-points detector and BRIEF feature descriptor. It has enhanced both these algorithms and
+is available as single algorithm to detect keypoints and describe those keypoints. 
+
+ 
+I have 4 different variations of dataset, So I have trained my classifers on all these datasets 
+saperately. The performance of these algorithms is described below.     
+
+* SIFT With min dimension as feature width
+Classifier	Feature Extractor	ImageDataType			Accuracy
+SVM			SIFT		Original			66%
+SVM			SIFT		Forniceal			67%
+SVM			SIFT		Forniceal Palpebral		64%
+SVM			SIFT		Palpebral			66%
+
+KNN			SIFT		Original			69%		
+KNN			SIFT		Forniceal			70%
+KNN			SIFT		Forniceal Palpebral		67%
+KNN			SIFT		Palpebral			68%
+
+Random Forest		SIFT		Original			68%	
+Random Forest		SIFT		Forniceal			73%
+Random Forest		SIFT		Forniceal Palpebral		65%
+Random Forest		SIFT		Palpebral			74%
+
+MLP			SIFT		Original			68%	
+MLP			SIFT		Forniceal			70%
+MLP			SIFT		Forniceal Palpebral		69%	
+MLP			SIFT		Palpebral			77%
+
+** Best performer is MLP with Palpebral with 77% of accuracy. **
+
+* SIFT with padding
+Classifier	Feature Extractor	ImageDataType			Accuracy
+SVM			SIFT		Original			66%
+SVM			SIFT		Forniceal			62%
+SVM			SIFT		Forniceal Palpebral		65%
+SVM			SIFT		Palpebral			68%
+
+KNN			SIFT		Original			66%		
+KNN			SIFT		Forniceal			65%
+KNN			SIFT		Forniceal Palpebral		68%
+KNN			SIFT		Palpebral			71%
+
+Random Forest		SIFT		Original			66%	
+Random Forest		SIFT		Forniceal			67%
+Random Forest		SIFT		Forniceal Palpebral		70%
+Random Forest		SIFT		Palpebral			75%
+
+MLP			SIFT		Original			00%	
+MLP			SIFT		Forniceal			62%
+MLP			SIFT		Forniceal Palpebral		62%	
+MLP			SIFT		Palpebral			74%
+
+** Result's not completed yet **
+
+SVM			HOG		Original			72%
+SVM			HOG		Forniceal			79%
+SVM			HOG		Forniceal Palpebral		76%
+SVM			HOG		Palpebral			71%
+
+KNN			HOG		Original			74%		
+KNN			HOG		Forniceal			67%
+KNN			HOG		Forniceal Palpebral		75%
+KNN			HOG		Palpebral			74%
+
+Random Forest		HOG		Original			77%	
+Random Forest		HOG		Forniceal			79%
+Random Forest		HOG		Forniceal Palpebral		79%
+Random Forest		HOG		Palpebral			71%
+
+MLP			HOG		Original			77%	
+MLP			HOG		Forniceal			81%
+MLP			HOG		Forniceal Palpebral		71%	
+MLP			HOG		Palpebral			74%
+
+** Best performer is MLP on Forniceal with 81% of accuracy. **
+
+SVM			ORB		Original			66%
+SVM			ORB		Forniceal			68%
+SVM			ORB		Forniceal Palpebral		62%
+SVM			ORB		Palpebral			68%
+
+KNN			ORB		Original			66%		
+KNN			ORB		Forniceal			73%
+KNN			ORB		Forniceal Palpebral		63%
+KNN			ORB		Palpebral			66%
+
+Random Forest		ORB		Original			66%	
+Random Forest		ORB		Forniceal			70%
+Random Forest		ORB		Forniceal Palpebral		64%
+Random Forest		ORB		Palpebral			69%
+
+MLP			ORB		Original			66%	
+MLP			ORB		Forniceal			67%
+MLP			ORB		Forniceal Palpebral		64%	
+MLP			ORB		Palpebral			69%
+
+** Best performer is KNN on Forniceal dataset with 73% of accuracy. **
+
+
+After completing experiments on machine learning based algorithms, here are my findings
+- For SIFT(min len width)	-> Best performer is MLP on Palpebral with 77% of accuracy.
+- For SIFT(padding)		-> Best performer is MLP on Palpebral with 77% of accuracy.
+- For HOG 			-> Best Performer is MLP on Forniceal with 81% of accuracy.
+- For ORB			-> Best Performer is KNN on Forniceal with 73% of accuracy.
+
+Finally, overall best machine learning performer is MLP on Forniceal dataset with HOG features. 
+We can use this algorithm in production. 
+
+
+Moreover, I have trained deep learning based Convolutional Neural Network (CNN)
+which is top performer on augmented data with accuracy of 93%. I will submit report 
+on CNN tomorrow and will complete API as well by tomorrow. Then I will will try to 
+further increase the performance of the models. I am confident we will acheive model
+with 95% accuracy.		

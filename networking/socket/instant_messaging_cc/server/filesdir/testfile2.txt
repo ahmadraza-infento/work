@@ -1,0 +1,5 @@
+Test messages allow you to email yourself or others a copy of your 
+message for review before it goes out to your entire list (or lists). 
+This makes it easy to review the visual layout, content, and spelling of 
+the message in your email client (such as Outlook, Gmail, Yahoo! Mail, 
+Outlook.com, Hotmail, etc.).

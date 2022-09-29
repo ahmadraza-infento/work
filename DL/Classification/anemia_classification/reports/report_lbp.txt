@@ -1,0 +1,71 @@
+Hi,
+I have completed the algorithm to train machine learning & deep learning based classifiers using
+our image dataset. 
+Now, we will simply select type of images to train classifiers and our classifier will be 
+trained on that specific type of images.
+ 
+As we know that, we have 4 different type of image dataset
+1- Original  		(complete images)
+2- Forniceal		(cropped forniceal images)
+3- Forniceal Palpebral 	(cropped forniceal palpebral images)
+4- Palpebral		(cropped palpebral images)
+
+After finishing this algorithm part, I have further worked on feature extraction algorithms to
+extract features from images and train classifiers on those extracted features. Initially, I have
+selected histogram of local binary patterns (LBPH). 
+
+The methodology of LBPH is explained as follows:  
+
+*** Local Binary Patterns Histogram (LBPH) ***
+
+Local Binary Pattern Histogram is a simple and fast approach to extract features from
+image. The local features are computed using the concept of sliding window. The steps
+involved in computation of LBPH are as follows:
+
+1. The center of a window is picked as threshold and compared with other points around it.
+2. A ’0’ is placed if the value is less than threshold and ’1’ otherwise.
+3. Combine these binary values either clockwise or anti-clockwise to create a binary number.
+4. Convert this binary number into decimal and place this newly computed number at the center of window.
+5. Divide the image into smaller patched and compute histogram for each patch.
+6. Concatenate the histograms of patches to create the final feature vector.
+
+I have used skimage based implementation of LBPH to generate features from image. After feature 
+extraction and performing some preprocessing I have fed the data to the classifiers and trained
+the classifiers on different combinations of hyperparameters. The performance of these classifiers
+on best hyperparameters is as follows. 
+
+Classifier	ImageDataType			Accuracy
+SVM			Original		75%
+SVM			Forniceal		71%
+SVM			Forniceal Palpebral	68%
+SVM			Palpebral		68%
+
+KNN			Original		68%		
+KNN			Forniceal		67%
+KNN			Forniceal Palpebral	65%
+KNN			Palpebral		65%
+
+Random Forest		Original		68%	
+Random Forest		Forniceal		64%
+Random Forest		Forniceal Palpebral	67%
+Random Forest		Palpebral		68%
+
+MLP			Original		74%	
+MLP			Forniceal		67%
+MLP			Forniceal Palpebral	66%	
+MLP			Palpebral		66%
+
+From the trend in the results, it is very clear that we will have more good results on our 
+original image dataset. For now, we have acheived highest performance of 75% by SVM at original
+image dataset. By these results, I am confident we will acheive more good results on HOG, SURF, 
+SIFT & ORB features. And further CNN will give more robust results . 
+
+
+Secondly, I have implemented HOG descriptor as well, tomorrow I will finish working with machine
+learning classifiers given HOG, Surf, SIFT and ORB and then will start working on CNN. 
+
+I have attached lbp folder containing script to train classifiers on our 4 different type of 
+image datasets. It is very time consuming to generate LBPH features, due to which I am attaching 
+my generated features as well. You can use these features or generate new one by uncommenting code
+in the files (I have mentioned where you have option to load generated features or generate new one). 
+		

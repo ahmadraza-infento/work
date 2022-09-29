@@ -1,0 +1,22 @@
+Forniceal
+- 2048, 50 e, 1000 aug -> 83.72
+- 1024, 50 e, 1000 aug -> 88.37
+- 512 , 50 e, 1000 aug -> 79.06
+
+- 512 , 50 e, 1500 aug -> 79.06
+- 1024, 50 e, 1500 aug -> 86.04
+- 2048, 50 e, 1500 aug -> 88.37
+- 4096, 50 e, 1500 aug -> 99.69
+
+Aug
+- 2048, 10 e, 1000 aug -> 79.54 -> after 10 epochs, performance reduced, seems overfitting
+- 1024, 50 e, 1000 aug -> 81.81
+- 512 , 50 e, 1000 aug -> 79.54
+
+- 512 , 50 e, 1500 aug -> 72.72 -> overfitting after 10 epochs
+- 1024, 50 e, 1500 aug -> 77.27 -> overfitting after 10 epochs
+- 2048, 50 e, 1500 aug -> 75.0  -> overfitting 
+
+- 512 , 50 e, 500 aug -> 84.09 
+- 1024, 50 e, 500 aug -> 84.09 remain same
+- 2048, 50 e, 500 aug -> 75.0   -> over fitting after 25 epochs 

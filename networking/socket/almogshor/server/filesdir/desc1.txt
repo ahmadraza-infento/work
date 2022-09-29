@@ -1,0 +1,12 @@
+# After installation run
+python main.py --image img1.jpg
+
+===========================================
+To Integrate this modue into another module
+===========================================
+from main import App
+my_app = App()
+# here detector_output is input image with detected rectangles drawn on it.
+	# matcher_output is input image with matched rectangles drawn on it.
+	indexes are position of matched rectangles.
+indexes, detector_output, matcher_out= app.detect_and_match('./img1.jpg')

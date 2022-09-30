@@ -1,0 +1,715 @@
+WindowManager:
+    Login:
+    RegisterPage:
+    DashboardPage:
+    Add_customer_page:
+<Add_customer_page>
+    name:'Add_customer_page'
+    #:import get_color_from_hex kivy.utils.get_color_from_hex
+    MDScreen:
+        MDBoxLayout:
+            orientation:'vertical'
+            padding:1
+            canvas.before:
+                Color:
+                    rgba:(0.9,0.9,0.9,1)
+                Rectangle:
+                    pos:self.pos
+                    size:self.size
+            MDBoxLayout:
+                orientation:'horizontal'
+                size_hint:1,0.08
+                canvas.before:
+                    Color:
+                        rgba:(57/255.0,177/255.0,204/255.0,255/255.0)
+                    Rectangle:
+                        pos:self.pos
+                        size:self.size
+                GridLayout:
+                    cols: 3
+
+                    MDIconButton:
+                        icon        : 'keyboard-backspace'
+                        on_release: root.manager.current='DashboardPage'
+                        text_size:self.size
+                        halign: 'center'
+                        valign:'center'
+                    MDLabel:
+                        text:'Customer Management'
+                        font_size:18
+                        bold:True
+                        text_size:self.size
+                        valign:'center'
+                        halign:'center'
+                    MDLabel:
+                        size_hint_x:0.1
+            MDBoxLayout:
+                id:register_page
+                size_hint:1,0.77
+                orientation:'vertical'
+                padding:15
+                spacing:5
+                canvas.before:
+                    Color:
+                        rgba:(.9,.9,.9,1)
+                    Rectangle:
+                        pos:self.size
+                        size:self.size
+                MDBoxLayout:
+                    size_hint:1,0.1
+                    # height:40
+                    MDLabel:
+                        id:form_heading
+                        text:"Add Customer"
+                        font_size:25
+                        bold:True
+                        text_size:self.size
+                        halign:'center'
+                        valign:'top'
+                        color:(0,0,0,1)
+                MDBoxLayout:
+                    size_hint:1,1
+                    # height:0
+                    padding:0
+                    spacing:2
+                    orientation:"vertical"
+                    MDLabel:
+                        id:form_mesg
+                        text:""
+                        font_size:15
+                        text_size:self.size
+                        halign:'center'
+                        valign:'top'
+                        color:(0.2,0.2,1,1)
+                    MDLabel:
+                        id:lbl_name
+                        text:"Customer Name:"
+                        size_hint:1,1
+                        font_size:17
+                        text_size:self.size
+                        halign:'left'
+                        valign:'center'
+                        color:(0,0,0,1)
+                    MDBoxLayout:
+                        size_hint:1,None
+                        height:33
+                        padding:0
+                        canvas.before:
+                            Color:
+                                rgba:(1,1,1,1)
+                            RoundedRectangle:
+                                pos:self.pos
+                                size:self.size
+                                radius:[4]
+                        TextInput:
+                            id:cust_name
+                            text:''
+                            multiline:False
+                            background_color: 0,0,0,0
+                            foreground_color: 0,0,0,1
+                            font_size:15
+                    MDLabel:
+                        id:lbl_telephone
+                        text:"Telephone:"
+                        size_hint:1,1
+                        font_size:17
+                        text_size:self.size
+                        halign:'left'
+                        valign:'center'
+                        color:(0,0,0,1)
+                    MDBoxLayout:
+                        size_hint:1,None
+                        height:33
+                        padding:0
+                        canvas.before:
+                            Color:
+                                rgba:(1,1,1,1)
+                            RoundedRectangle:
+                                pos:self.pos
+                                size:self.size
+                                radius:[4]
+                        TextInput:
+                            id:cust_phone
+                            text:''
+                            multiline:False
+                            background_color: 0,0,0,0
+                            foreground_color: 0,0,0,1
+                            font_size:15
+                    MDLabel:
+                        id:lbl_location
+                        text:"Delivery Location:"
+                        size_hint:1,1
+                        font_size:17
+                        text_size:self.size
+                        halign:'left'
+                        valign:'center'
+                        color:(0,0,0,1)
+                    MDBoxLayout:
+                        size_hint:1,None
+                        height:33
+                        padding:0
+                        canvas.before:
+                            Color:
+                                rgba:(1,1,1,1)
+                            RoundedRectangle:
+                                pos:self.pos
+                                size:self.size
+                                radius:[4]
+                        TextInput:
+                            id:cust_location
+                            text:''
+                            multiline:False
+                            background_color: 0,0,0,0
+                            foreground_color: 0,0,0,1
+                            font_size:15
+                    
+                    
+                    MDLabel:
+                        id:lbl_date
+                        text:"Insertion Date:"
+                        size_hint:1,1
+                        font_size:17
+                        text_size:self.size
+                        halign:'left'
+                        valign:'center'
+                        color:(0,0,0,1)
+                    MDBoxLayout:
+                        size_hint:1,None
+                        height:33
+                        padding:0
+                        canvas.before:
+                            Color:
+                                rgba:(1,1,1,1)
+                            RoundedRectangle:
+                                pos:self.pos
+                                size:self.size
+                                radius:[4]
+                        TextInput:
+                            id:cust_date
+                            text:''
+                            hint_text:'dd/mm/yyyy'
+                            multiline:False
+                            background_color: 0,0,0,0
+                            foreground_color: 0,0,0,1
+                            font_size:15
+                    MDLabel:
+                        text:''
+                        size_hint:1,None
+                        height:40
+                    
+            MDBoxLayout:
+                size_hint:1,0.15
+                padding:10
+                MDRoundFlatButton:
+                    text:"Save Customer"
+                    font_size:18
+                    size_hint_x:1
+                    theme_text_color: "Custom"
+                    text_color: 0, 0, 0, 1
+                    on_press: root.load_main()
+<Login>
+    name:'Login'
+    orientation:"vertical"
+    canvas.before:
+        Color:
+            rgba:(1,1,1,1)
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    MDBoxLayout:
+        orientation:'vertical'
+        size_hint:1,1
+        MDBoxLayout:
+            size_hint:1,0.10
+            orientation:'horizontal'
+            canvas.before:
+                Color:
+                    rgba:(57/255.0,177/255.0,204/255.0,255/255.0)
+                Rectangle:
+                    pos:self.pos
+                    size:self.size
+            
+            MDLabel:
+                text:'Customer Management'
+                font_size:18
+                bold:True
+                text_size:self.size
+                valign:'center'
+                halign:'center'
+        MDBoxLayout:
+            id:working_area
+            size_hint:1,0.9
+            padding:2
+            canvas.before:
+                Color:
+                    rgba:(.9,.9,.9,1)
+                Rectangle:
+                    pos:self.pos
+                    size:self.size
+            MDBoxLayout:
+                id:welcome_page
+                size_hint:1,1
+                orientation:'vertical'
+                padding:15
+                spacing:5
+                MDBoxLayout:
+                    size_hint:1,0.2
+                    orientation:"vertical"
+                   
+                    MDLabel:
+                        id:login_heading
+                        text:"Login"
+                        font_size:30
+                        bold:True
+                        text_size:self.size
+                        halign:'center'
+                        valign:'top'
+                        color:(0,0,0,1)
+                    MDLabel:
+                        id:lbl_msg
+                        text:""
+                        font_size:12
+                        text_size:self.size
+                        halign:'center'
+                        valign:'center'
+                        color:(1,0.23,0.2,1)
+                MDBoxLayout:
+                    size_hint:1,0.55
+                    id:login_inputs
+                    # height:0
+                    padding:0
+                    spacing:2
+                    orientation:"vertical"
+                    MDLabel:
+                        id:lbl_username
+                        text:"Email:"
+                        size_hint:1,1
+                        font_size:17
+                        text_size:self.size
+                        halign:'left'
+                        valign:'center'
+                        color:(0,0,0,1)
+                    MDBoxLayout:
+                        size_hint:1,None
+                        height:33
+                        padding:0
+                        canvas.before:
+                            Color:
+                                rgba:(1,1,1,1)
+                            RoundedRectangle:
+                                pos:self.pos
+                                size:self.size
+                                radius:[4]
+                        TextInput:
+                            id:txt_email
+                            text:''
+                            multiline:False
+                            background_color: 0,0,0,0
+                            foreground_color: 0,0,0,1
+                            font_size:15
+
+                    MDLabel:
+                        id:lbl_password
+                        text:"Password:"
+                        size_hint:1,1
+                        font_size:17
+                        text_size:self.size
+                        halign:'left'
+                        valign:'center'
+                        color:(0,0,0,1)
+                    MDBoxLayout:
+                        size_hint:1,None
+                        height:33
+                        padding:0
+                        canvas.before:
+                            Color:
+                                rgba:(1,1,1,1)
+                            RoundedRectangle:
+                                pos:self.pos
+                                size:self.size
+                                radius:[4]
+                        TextInput:
+                            id:txt_password
+                            text:''
+                            multiline:False
+                            password:True
+                            background_color: 0,0,0,0
+                            foreground_color: 0,0,0,1
+                            font_size:15
+                    MDLabel:
+                        text:''
+                        size_hint:1,None
+                        height:40
+                    
+                    MDBoxLayout:
+                        orientation:'vertical'
+                        size_hint:1,None
+                        height:30
+                        spacing:2
+                        
+                        MDRoundFlatButton:
+                            id:login_btn
+                            text:"Login"
+                            opacity:1
+                            font_size:18
+                            size_hint_x:1
+                            theme_text_color: "Custom"
+                            text_color: 0, 0, 0, 1
+                            on_release:root.call_dashboard_page()
+                          
+                        
+                MDBoxLayout:
+                    size_hint: 1,.30
+                    orientation:"vertical"
+                    spacing:2
+                    
+                    MDRoundFlatButton:
+                        id:btn_register
+                        opacity:0
+                        text:"Register"
+                        font_size:17
+                        size_hint_x:1
+                        theme_text_color: "Custom"
+                        text_color: 0, 0, 1, 1
+                        on_press:root.manager.current='RegisterPage'
+         
+                    Widget:
+                        size_hint_y:0.7
+<DashboardPage>
+    name:'DashboardPage'
+
+    #:import get_color_from_hex kivy.utils.get_color_from_hex
+    MDScreen:
+        
+        MDBoxLayout:
+            orientation: 'vertical'
+            size_hint_y: 1
+            MDBoxLayout:
+                orientation:'horizontal'
+                size_hint:1,0.08
+                canvas.before:
+                    Color:
+                        rgba:(57/255.0,177/255.0,204/255.0,255/255.0)
+                    Rectangle:
+                        pos:self.pos
+                        size:self.size
+                GridLayout:
+                    cols: 3
+                
+                    MDIconButton:
+                        icon        : 'keyboard-backspace'
+                        on_release: root.manager.current='Login'
+                        text_size:self.size
+                        halign: 'center'
+                        valign:'center'
+                    MDLabel:
+                        text:'Customer Management'
+                        font_size:18
+                        bold:True
+                        text_size:self.size
+                        valign:'center'
+                        halign:'center'
+                    MDLabel:
+                        size_hint_x:0.1
+            MDBoxLayout:
+                id:working_area
+                size_hint:1,0.92
+                padding:0
+                canvas.before:
+                    Color:
+                        # rgba:(159/255.0,159/255.0,159/255.0,1)
+                        rgba:(.9,.9,.9,1)
+                    Rectangle:
+                        pos:self.pos
+                        size:self.size
+                MDBoxLayout:
+                    id:welcome_page
+                    size_hint:1,1
+                    orientation:'vertical'
+                    padding:1
+                    spacing:10
+                    MDBoxLayout:
+                        orientation:"horizontal"
+                        size_hint:1,0.07
+                        MDLabel:
+                            text:"Name"
+                            font_size:12
+                            color:(0,0,0,1)
+                            text_size:self.size
+                            halign:'center'
+                            valign:'center'
+                            bold:True
+                        MDLabel:
+                            text:"Phone"
+                            font_size:12
+                            color:(0,0,0,1)
+                            text_size:self.size
+                            halign:'center'
+                            valign:'center'
+                            bold:True
+                        MDLabel:
+                            text:"Location"
+                            font_size:12
+                            color:(0,0,0,1)
+                            text_size:self.size
+                            halign:'center'
+                            valign:'center'
+                            bold:True
+                        MDLabel:
+                            text:"Date"
+                            font_size:12
+                            color:(0,0,0,1)
+                            text_size:self.size
+                            halign:'center'
+                            valign:'center'
+                            bold:True
+                    MDBoxLayout:
+                        size_hint:1,0.73
+                        id:testBox
+                        orientation:'vertical'
+                        spacing:4
+                        canvas.before:
+                            Color:
+                                rgba:(1,1,1,1)
+                            Rectangle:
+                                pos:self.pos
+                                size:self.size
+                        
+                        ScrollView:
+                            do_scroll_x: False
+                            do_scroll_y: True
+                            size:self.size
+                            bar_width:10
+                            bar_color: 0, 0, 0, .21   # red
+                            effect_cls: "ScrollEffect"
+                            scroll_type: ['bars', 'content']
+                            GridLayout:
+                                id:row_widget_box
+                                height:self.minimum_height
+                                cols:1
+                                size_hint_y: None
+                                orientation: 'tb-lr'#'vertical'
+                                spacing:1
+                                padding:1
+                                # RowButton:
+                                # RowButton:
+
+                    MDBoxLayout:
+                        size_hint:1,.20  
+                        padding:15
+                        orientation:"vertical"
+                        spacing:5
+                        # MDRoundFlatButton:
+                        #     text:"Refresh Table"
+                        #     font_size:18
+                        #     size_hint_x:1
+                        #     theme_text_color: "Custom"
+                        #     text_color: 0, 0, 0, 1
+                        #     on_release: root.show_records()
+                        MDRoundFlatButton:
+                            text:"Add Customer"
+                            font_size:18
+                            size_hint_x:1
+                            theme_text_color: "Custom"
+                            text_color: 0, 0, 0, 1
+                            on_release: root.load_Add_customer_page()
+                                         
+<RegisterPage>
+    name:'RegisterPage'
+    MDScreen:
+        MDBoxLayout:
+            orientation:'vertical'
+            size_hint:1,1
+            MDBoxLayout:
+                size_hint:1,.075
+                orientation:'horizontal'
+                canvas.before:
+                    Color:
+                        rgba:(57/255.0,177/255.0,204/255.0,255/255.0)
+                    Rectangle:
+                        pos:self.pos
+                        size:self.size
+                MDIconButton:
+                    icon        : 'keyboard-backspace'
+                    on_release: root.manager.current='Login'
+                    text_size:self.size
+                    halign: 'center'
+                    valign:'middle'
+                MDLabel:
+                    text:'Customer Management'
+                    font_size:18
+                    bold:True
+                    text_size:self.size
+                    valign:'center'
+                    halign:'center'
+
+            MDBoxLayout:
+                id:working_area
+                size_hint:1,0.92
+                padding:2
+                canvas.before:
+                    Color:
+                        rgba:(.9,.9,.9,1)
+                    Rectangle:
+                        pos:self.pos
+                        size:self.size
+                MDBoxLayout:
+                    id:register_page
+                    size_hint:1,1
+                    orientation:'vertical'
+                    padding:15
+                    spacing:5
+                    MDBoxLayout:
+                        size_hint:1,0.12
+                        spacing:2
+                        # height:40
+                        orientation:'vertical'
+                        MDLabel:
+                            id:register_heading
+                            text:"Registeration"
+                            font_size:25
+                            bold:True
+                            text_size:self.size
+                            halign:'center'
+                            valign:'top'
+                            color:(0,0,0,1)
+                        MDLabel:
+                            id:rg_msg
+                            text:""
+                            font_size:12
+                            text_size:self.size
+                            halign:'center'
+                            valign:'center'
+                            color:(1,0,0,1)
+                    MDBoxLayout:
+                        size_hint:1,0.70
+                        # height:0
+                        padding:0
+                        spacing:2
+                        orientation:"vertical"
+                        MDLabel:
+                            id:lbl_name
+                            text:"Name:"
+                            size_hint:1,1
+                            font_size:17
+                            text_size:self.size
+                            halign:'left'
+                            valign:'center'
+                            color:(0,0,0,1)
+                        MDBoxLayout:
+                            size_hint:1,None
+                            height:33
+                            padding:0
+                            canvas.before:
+                                Color:
+                                    rgba:(1,1,1,1)
+                                RoundedRectangle:
+                                    pos:self.pos
+                                    size:self.size
+                                    radius:[4]
+                            TextInput:
+                                id:txt_name
+                                text:''
+                                multiline:False
+                                background_color: 0,0,0,0
+                                foreground_color: 0,0,0,1
+                                font_size:15
+                        MDLabel:
+                            id:lbl_phone
+                            text:"Phone:"
+                            size_hint:1,1
+                            font_size:17
+                            text_size:self.size
+                            halign:'left'
+                            valign:'center'
+                            color:(0,0,0,1)
+                        MDBoxLayout:
+                            size_hint:1,None
+                            height:33
+                            padding:0
+                            canvas.before:
+                                Color:
+                                    rgba:(1,1,1,1)
+                                RoundedRectangle:
+                                    pos:self.pos
+                                    size:self.size
+                                    radius:[4]
+                            TextInput:
+                                id:txt_phone
+                                text:''
+                                multiline:False
+                                background_color: 0,0,0,0
+                                foreground_color: 0,0,0,1
+                                font_size:15
+                        MDLabel:
+                            id:lbl_email
+                            text:"Email:"
+                            size_hint:1,1
+                            font_size:17
+                            text_size:self.size
+                            halign:'left'
+                            valign:'center'
+                            color:(0,0,0,1)
+                        MDBoxLayout:
+                            size_hint:1,None
+                            height:33
+                            padding:0
+                            canvas.before:
+                                Color:
+                                    rgba:(1,1,1,1)
+                                RoundedRectangle:
+                                    pos:self.pos
+                                    size:self.size
+                                    radius:[4]
+                            TextInput:
+                                id:txt_email
+                                text:''
+                                multiline:False
+                                background_color: 0,0,0,0
+                                foreground_color: 0,0,0,1
+                                font_size:15
+                        MDLabel:
+                            id:lbl_password
+                            text:"Password:"
+                            size_hint:1,1
+                            font_size:17
+                            text_size:self.size
+                            halign:'left'
+                            valign:'center'
+                            color:(0,0,0,1)
+                        MDBoxLayout:
+                            size_hint:1,None
+                            height:33
+                            padding:0
+                            canvas.before:
+                                Color:
+                                    rgba:(1,1,1,1)
+                                RoundedRectangle:
+                                    pos:self.pos
+                                    size:self.size
+                                    radius:[4]
+                            TextInput:
+                                id:txt_password
+                                text:''
+                                multiline:False
+                                password:True
+                                background_color: 0,0,0,0
+                                foreground_color: 0,0,0,1
+                                font_size:15
+                        MDLabel:
+                            text:''
+                            size_hint:1,None
+                            height:40
+                        MDRoundFlatButton:
+                            text:"Register"
+                            font_size:18
+                            size_hint_x:1
+                            theme_text_color: "Custom"
+                            text_color: 0, 0, 0, 1
+                            on_press:root.register_user()
+                    
+                                
+                    MDBoxLayout:
+                        size_hint: 1,.18
+                    
+

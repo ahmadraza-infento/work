@@ -1,0 +1,516 @@
+WindowManager:
+    Login:
+    MainPage:
+    Setting:
+    MotivationTask:
+    GraphicForm:
+<GraphicForm>
+    name:'graphicform'
+    MDScreen:
+        BoxLayout:
+            orientation:'vertical'
+            padding:5
+            MDCard:
+                orientation: "vertical"
+                padding: "3dp"
+                spacing: "2dp"
+                size_hint: 1,.7
+                pos_hint: {"center_x": .5, 'top': 1}
+                line_color: 0.2, 0.2, 0.2, 0.3
+
+                MDLabel:
+                    text: "Graphical View"
+                    theme_text_color: "Primary"
+                    size_hint_y: 0.2
+                    halign:'center'
+                    font_size:25
+
+                MDSeparator:
+                    height: "2dp"
+               
+                BoxLayout:
+                    orientation: "horizontal"
+                    size_hint_y:0.7
+                    padding: "2dp"
+                    spacing: "1dp"
+                    BoxLayout:
+                        orientation: "vertical"
+                        size_hint:0.35,1
+                        padding:5
+                        spacing:10
+                        MDRectangleFlatButton:
+                            text:"Daily"
+                            font_size   : "15dp"
+                            size_hint_x:1
+                            on_release: root.on_daily()
+                            # halign: 'center'
+                        MDRectangleFlatButton:
+                            text:"Weekly"
+                            font_size   :"15dp"
+                            size_hint_x:1
+                            on_release: root.on_weekly()
+                        MDRectangleFlatButton:
+                            text:"Monthly"
+                            font_size   : "15dp"
+                            size_hint_x:1
+                            on_release: root.on_monthly()
+                        Widget:
+
+                    BoxLayout:
+                        orientation: "vertical"
+                        size_hint:0.65,1
+                        id:graph_box
+                        canvas.before:
+                            Color:
+                                rgba:(0.06,0.2,0.21,1)
+                            Rectangle:
+                                pos:self.pos
+                                size:self.size
+            Widget:
+                size_hint:1,0.2
+            BoxLayout:
+                size_hint:1,0.3
+                padding:10
+                MDFillRoundFlatButton:
+                    text:"Back"
+                    font_size:18
+                    theme_text_color: "Custom"
+                    text_color: 0, 0, 0, 1
+                    on_release: root.load_main()
+<Login>
+    name:'login'
+    canvas.before:
+        Color:
+            rgba:(1,1,1,1)
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    BoxLayout:
+        orientation:'vertical'
+        size_hint_x:1
+        size_hint_y:1
+        BoxLayout:
+            orientation:'vertical'
+            size_hint_x:1
+            size_hint_y:0.08
+            padding:10
+            canvas.before:
+                Color:
+                    rgba:(0.06,0.45,0.45,1)
+                Rectangle:
+                    pos:self.pos
+                    size:self.size
+            MDLabel:
+                text:'English'
+                halign: 'right'
+                size_hint:1,1
+                font_size:18
+                bold:True
+                color:1,1,1,1
+        BoxLayout:
+            orientation:'vertical'
+            size_hint_x:1
+            size_hint_y:.4
+            padding:5
+            spacing:10
+            MDLabel:
+                text:"Explore the Fitness"
+                font_size: 30
+                color: (66/255,245/255,227/255,1)
+                # pos_hint:{'x':0,'y':0.35}
+                halign: 'center'
+                valign: 'center'
+                bold: True
+                outline_color: (0,0,0)
+                outline_width: 1
+                size_hint: (1, 0.3)
+            MDLabel:
+                id:approved
+                text:''
+                halign: 'center'
+                size_hint: (1, 0.1)
+                font_size:15
+
+            MDTextField:
+                id:user
+                # pos_hint: {'center_x':0.5,'center_y':0.6}
+                size_hint: (1,0.15)
+                hint_text : 'Username'
+                helper_text: 'Required'
+                helper_text_mode: 'on_error'
+                icon_right: 'account'
+                icon_right_color: app.theme_cls.primary_color
+                required : True
+            MDTextField:
+                id:Pass
+                # pos_hint: {'center_x':0.5,'center_y':0.6}
+                size_hint: (1,0.15)
+                hint_text : 'Password'
+                helper_text: 'Required'
+                password:True
+                helper_text_mode: 'on_error'
+                icon_right: 'eye-off'
+                icon_right_color: app.theme_cls.primary_color
+                required : True
+            MDRoundFlatButton:
+                text:"Login"
+                font_size:18
+                size_hint_x:1
+                # pos_hint: {'center_x':0.5, 'center_y':0.45}
+                theme_text_color: "Custom"
+                text_color: 0, 0, 0, 1
+                on_release:root.verify_credencials()
+                #root.manager.current='mainpage'
+            
+        Widget:
+            size_hint_y:0.1
+    
+            
+<MainPage>
+    name:'mainpage'
+
+    #:import get_color_from_hex kivy.utils.get_color_from_hex
+    MDScreen:
+        
+        BoxLayout:
+            orientation: 'vertical'
+            padding: "5dp"
+            spacing: "5dp"
+            size_hint_y: 1
+            # height: self.minimum_height
+            BoxLayout:
+                orientation:'horizontal'
+                size_hint:1,0.075
+                GridLayout:
+                    cols: 3
+                    orientation: "tb-lr"
+                    size_hint_y: None
+                    height: self.minimum_height
+                    padding: "5dp"
+                    spacing: "5dp"
+
+                    MDIconButton:
+                        icon        : 'keyboard-backspace'
+                        on_release: root.manager.current='login'
+                        halign: 'center'
+                    MDLabel:
+                        text        : "Back"
+                        font_size   : "15dp"
+                        halign: 'center'
+
+                    MDIconButton:
+                        icon        : 'hammer-wrench'
+                        on_release: root.load_setting()
+                        halign: 'center'
+                    MDLabel:
+                        text        : "Setting"
+                        font_size   : "15dp"
+
+                    MDIconButton:
+                        icon: 'graph'
+                        halign: 'center'
+                        on_release: root.load_graphicForm()
+                    MDLabel:
+                        text: "Graph"
+                        font_size: "15dp"
+                    
+            
+            MDCard:
+                orientation: "vertical"
+                padding: "3dp"
+                spacing: "2dp"
+                size_hint: 1,.325
+                pos_hint: {"center_x": .5, 'top': 1}
+                line_color: 0.2, 0.2, 0.2, 0.3
+
+                MDLabel:
+                    id:notification_bar
+                    text: "No Activity"
+                    theme_text_color: "Secondary"
+                    size_hint_y: 0.2
+                    markup      : True
+
+                MDSeparator:
+                    height: "2dp"
+                
+                BoxLayout:
+                    orientation: "horizontal"
+                    size_hint_y:0.8
+                    padding: "2dp"
+                    spacing: "1dp"
+                    BoxLayout:
+                        orientation: "vertical"
+                        size_hint:0.35,1
+                        padding:5
+                        spacing:5
+                        
+                        MDRoundFlatIconButton:
+                            icon        : 'location-enter'
+                            on_release  : root.on_check_in() 
+                            text:"Check-in"
+                            font_size   : "15dp"
+                            size_hint:1,1
+                            # halign: 'center'
+                        MDRoundFlatIconButton:
+                            icon        : 'location-exit'
+                            on_release  : root.on_check_out() 
+                            text        : "Check-out"
+                            font_size   : "15dp"
+                            size_hint:1,1
+                            # halign: 'center'
+                        MDRoundFlatIconButton:
+                            icon: 'alarm'
+                            text: "Notifications On"
+                            font_size: "15dp"
+                            size_hint:1,1
+                            on_release  : root.on_notif(self) 
+                            # halign: 'center'
+                    
+            
+            MDFillRoundFlatButton:
+                id          : btn_motivationalTask
+                text        : "Motivation Task"
+                size_hint_y : 1
+                font_size:18
+                halign:'center'
+                size_hint:1,0.075
+                on_release:root.manager.current='motivation task'
+            BoxLayout:
+                size_hint:1,0.2
+                orientation:'vertical'
+                canvas.before:
+                    Color:
+                        rgba:(1,1,1,1)
+                    Rectangle:
+                        pos:self.pos
+                        size:self.size
+                MDLabel:
+                    id          : lbl_accelerometer
+                    text        : "Accelerometer"
+                    size_hint_y : 0.7
+                    font_size:24
+                    halign:'center'
+                    valign:"bottom"
+                MDLabel:
+                    id          : sensor_input
+                    text        : ""
+                    size_hint_y : 0.2
+                    font_size:15
+                    halign:'center'
+                    valign:'top'
+
+<Setting>
+    name:'setting'
+    MDScreen:
+        BoxLayout:
+            orientation:'vertical'
+            size_hint:1,1
+            padding:'15dp'
+            spacing:5
+            
+            BoxLayout:
+                orientation: "vertical"
+                padding: "15dp"
+                spacing: "5dp"
+                
+                canvas.before:
+                    Color:
+                        rgba:(1,1,1,1)
+                    Rectangle:
+                        pos:self.pos
+                        size:self.size
+                MDLabel:
+                    text: "Settings"
+                    theme_text_color: "Primary"
+                    font_size:25
+                    size_hint_y:0.2
+
+                MDSeparator:
+                    height: "2dp"
+
+                GridLayout:
+                    cols: 2
+                    orientation: "lr-tb"
+                    size_hint_y: 1
+                    padding: "5dp"
+                    spacing: "5dp"
+
+                    MDLabel:
+                        text: 'Name:'
+                        font_size: "15dp"
+                    MDTextField:
+                        id          : name
+                        font_size   : "15dp"
+
+                    MDLabel:
+                        text: 'Age:'
+                        font_size: "15dp"
+                    MDTextField:
+                        id          : age
+                        font_size   : "15dp"
+
+                    MDLabel:
+                        text: 'Weight [kg]:'
+                        font_size: "15dp"
+                    MDTextField:
+                        id          : weight
+                        font_size   : "15dp"
+
+                    MDLabel:
+                        text: "Height [m]:"
+                        font_size: "15dp"
+                    MDTextField:
+                        id          : height
+                        font_size   : "15dp"
+
+                    MDLabel:
+                        text: "Job position:"
+                        font_size: "15dp"
+                    MDTextField:
+                        id          : position
+                        font_size   : "15dp"
+                    MDLabel:
+                        text: "Notifications per hour"
+                        font_size: "15dp"
+                    MDTextField:
+                        id          : notification
+                        font_size   : "15dp"
+
+                    MDRoundFlatButton:
+                        id          : btn_action
+                        text        : "Save"
+                        font_size   : 18
+                        size_hint_x:.5
+                        theme_text_color: "Custom"
+                        text_color  : 0, 0, 0, 1
+                        on_release  : root.save_records(self.text)
+                
+                    MDRoundFlatButton:
+                        text        : "View"
+                        font_size:18
+                        size_hint_x:.5
+                        theme_text_color: "Custom"
+                        text_color: 0, 0, 0, 1
+                        on_release: root.load()
+
+                    
+            Widget:
+                size_hint_y:0.3  
+        GridLayout:
+            cols: 2
+            orientation: "lr-tb"
+            size_hint_y:0.2
+            padding: "15dp"
+            spacing: "5dp"
+            
+            MDFillRoundFlatButton:
+                text:"Back"
+                font_size:18
+                size_hint_x:.5
+                theme_text_color: "Custom"
+                text_color: 0, 0, 0, 1
+                on_release: root.clear()
+            MDFillRoundFlatButton:
+                text:"Next"
+                font_size:18
+                size_hint_x:.5
+                theme_text_color: "Custom"
+                text_color: 0, 0, 0, 1
+                    
+
+<MotivationTask>
+    name:'motivation task'
+    MDScreen:
+        BoxLayout:
+            orientation:'vertical'
+            padding:5
+            MDCard:
+                orientation: "vertical"
+                padding: "3dp"
+                spacing: "2dp"
+                size_hint: 1,.5
+                pos_hint: {"center_x": .5, 'top': 1}
+                line_color: 0.2, 0.2, 0.2, 0.3
+                MDLabel:
+                    text: "Motivation Tasks"
+                    theme_text_color: "Primary"
+                    size_hint_y: 0.2
+                    font_size:25
+                    halign:'center'
+
+                MDSeparator:
+                    height: "2dp"
+
+                GridLayout:
+                    cols: 2
+                    orientation: "lr-tb"
+                    spacing: "4dp"
+                    size_hint_y:0.7
+
+                    MDCheckbox:
+                        size_hint: None, None
+                        size: "30dp", motivation_text.height
+                        pos_hint: {'center_x': .5, 'center_y': .55}
+                    MDLabel:
+                        id: motivation_text
+                        text: "you should running now"
+                        font_size: "15dp"
+                        size: self.texture_size
+
+                    MDCheckbox:
+                        size_hint: None, None
+                        size: "30dp", motivation_text.height
+                        pos_hint: {'center_x': .5, 'center_y': .5}
+                    MDLabel:
+                        id: motivation_text
+                        text: "you should walking now"
+                        font_size: "15dp"
+                        size: self.texture_size
+
+                    MDCheckbox:
+                        size_hint: None, None
+                        size: "30dp", motivation_text.height
+                        pos_hint: {'center_x': .5, 'center_y': .5}
+                    MDLabel:
+                        id: motivation_text
+                        text: "you should running for 30 min now"
+                        font_size: "15dp"
+                        size: self.texture_size
+
+                    MDCheckbox:
+                        size_hint: None, None
+                        size: "30dp", motivation_text.height
+                        pos_hint: {'center_x': .5, 'center_y': .5}
+                    MDLabel:
+                        id: motivation_text
+                        text: "you should walking for 1 hour now"
+                        font_size: "15dp"
+                        size: self.texture_size
+
+                
+                BoxLayout:
+                    size_hint:1,0.3
+                    padding:10
+                    spacing:5
+                    MDFillRoundFlatButton:
+                        text:"Back"
+                        font_size:18
+                        theme_text_color: "Custom"
+                        text_color: 0, 0, 0, 1
+                        on_release: root.load_main()
+                    
+                    MDFillRoundFlatButton:
+                        text:"Remind Me"
+                        font_size:18
+                        theme_text_color: "Custom"
+                        text_color: 0, 0, 0, 1
+            Widget:
+                size_hint:1,0.2
+
+
+
+
+
+
+
+

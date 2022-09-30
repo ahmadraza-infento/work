@@ -1,0 +1,20 @@
+{
+  "config_dir": "E:\\Freelance\\Scrapping\\Selenium\\box_novel\\user_app\\.pyupdater",
+  "filename": "E:\\Freelance\\Scrapping\\Selenium\\box_novel\\user_app\\.pyupdater\\config.pyu",
+  "count": 0,
+  "app_config": {
+    "APP_NAME": "Istorian",
+    "CLIENT_CONFIG_PATH": [
+      "client_config.py"
+    ],
+    "COMPANY_NAME": "Raza",
+    "PLUGIN_CONFIGS": {},
+    "UPDATE_PATCHES": false,
+    "MAX_DOWNLOAD_RETRIES": 3,
+    "HTTP_TIMEOUT": 30,
+    "UPDATE_URLS": [
+      "https://www.fiverr.com/ahmadraza18"
+    ],
+    "DATA_DIR": "E:\\Freelance\\Scrapping\\Selenium\\box_novel\\user_app"
+  }
+}

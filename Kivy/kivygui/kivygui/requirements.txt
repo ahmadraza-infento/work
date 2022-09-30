@@ -1,0 +1,5 @@
+pip install  tensorflow==2.9.1
+pip install cryptography==37.0.2
+pip install  kivy-garden
+garden install matplotlib
+pip install matplotlib==2.2.2

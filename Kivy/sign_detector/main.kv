@@ -1,0 +1,1211 @@
+# actual code starts here for main app
+<Main>:
+    id:main_window
+    size_hint_x:1
+    size_hint_y:1
+    canvas.before:
+        Color:
+            rgba:(1,1,1,1)
+        Rectangle:
+            pos:self.pos
+            size:self.size
+    AnchorLayout:
+        id:main_box
+        orientation:"vertical"
+        anchor_x:"center"
+        anchor_y:"center"
+
+<FormBox@BoxLayout>
+    padding:1
+    spacing:1
+    canvas.before:
+        Color:
+            rgba:(0,153/255,153/255,1)
+        Rectangle:
+            pos:self.pos
+            size:self.size
+<BackgroundBox@BoxLayout>
+    padding:1
+    spacing:1
+    orientation:'vertical'
+    canvas.before:
+        Color:
+            rgba:(.98,.98,.98,1)
+        RoundedRectangle:
+            pos:self.pos
+            size:self.size
+            radius:[10]
+<RowBox@BoxLayout>
+    orientation:'horizontal'
+    size_hint_y:None
+    size_hint_x:1
+    height:100
+    spacing:2
+    canvas.before:
+        Color:
+            rgba:(1,1,1,1)
+        RoundedRectangle:
+            pos:self.pos
+            size:self.size
+            radius:[3]
+<NumCount@Label>
+    size_hint_x:.2
+    size_hint_y:1
+    text_size:self.size
+    halign:'center'
+    valign:'center'
+    font_size:16
+    color:(0,0,0,1)
+
+<Description@Label>
+    size_hint_x:.8
+    size_hint_y:1
+    text_size:self.size
+    halign:'left'
+    valign:'center'
+    font_size:15
+    color:(0,0,0,1)
+
+<DesButton@BoxLayout+Button+ButtonBehavior>
+    orientation:"horizontal"
+    background_color:0,0,0,0
+    size_hint_x:1
+    size_hint_y:None
+    height:80
+    text_size:self.size
+    padding:1
+    canvas.before:
+        Color:
+            rgba:(1,1,1,1)if self.state=='normal' else (0,223/255,250/255,1)
+        RoundedRectangle:
+            pos:self.pos
+            size:self.size 
+            radius:[10] 
+#rounded button 
+<RoundedButton@Button>:
+    background_color: 0,0,0,0
+    background_normal:''
+    text_size:self.size
+    bold: True
+    valign:'middle'
+    halign:'center'
+    font_size:20
+    canvas.before:
+        Color:
+            rgba:(0,152/255,153/255,1)if self.state=='normal' else (0,.7,.7,1) 
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [5]
+
+#home_window
+<Home>:
+    id:login_window #from this size can be changed
+    size_hint_x:1
+    size_hint_y:1
+    orientation:'vertical'
+    canvas.before:
+        Color:
+            rgba:(1,1,1,1)
+        Rectangle:
+            pos:self.pos
+            size:self.size
+    
+    FormBox:
+        id:headings
+        size_hint_x:1
+        size_hint_y:.15
+        Label:
+            text:"Kids Training Software" 
+            color:(1,1,1,1)
+            font_size:20
+            bold:True
+            # height:50
+            size_hint_y:1
+    BoxLayout:
+        size_hint_x:1
+        size_hint_y:1
+        padding:2
+        orientation:'vertical'
+
+        BackgroundBox:
+            id:main_area
+            size_hint_x:1
+            size_hint_y:1
+            orientation:'vertical'
+            padding:3
+            spacing:5    
+                    
+            RoundedButton:
+                text:"Adventure"
+                size_hint_y:.5
+                on_press:root.modes_window()
+            RoundedButton:
+                text:"Tutorial"
+                size_hint_y:.5
+                on_press:root.tutorial_window()
+            RoundedButton:
+                id:btn_score
+                text:"Score"
+                size_hint_y:.5
+    BoxLayout:
+        size_hint_x:1
+        size_hint_y:.10
+            
+#tutorial form
+<Tutorials>:
+    id:tutorial_window #from this size can be changed
+    size_hint_x:1
+    size_hint_y:1
+    orientation:'vertical'
+    canvas.before:
+        Color:
+            rgba:(1,1,1,1)
+        Rectangle:
+            pos:self.pos
+            size:self.size
+
+    FormBox:
+        id:headings
+        size_hint_x:1
+        size_hint_y:.15
+        BoxLayout:
+            size_hint_x:None
+            width:50
+            padding:2
+            Button: 
+                background_normal:'assets/bg2.png'
+                size_hint_x:.5
+                on_press:root.btn_back_click()
+        Label:
+            text:"Tutorial" 
+            color:(1,1,1,1)
+            font_size:20
+            bold:True
+            # height:50
+            size_hint_y:1
+            pos_hint_x:.5
+        BoxLayout:
+            size_hint_x:None
+            width:25
+    BoxLayout:
+        size_hint_x:1
+        size_hint_y:1
+        padding:2
+        orientation:'vertical'
+
+        BackgroundBox:
+            id:main_area
+            size_hint_x:1
+            size_hint_y:1
+            orientation:'vertical'
+            padding:3
+            spacing:5   
+            canvas.before:
+                Color:
+                    rgba:(.8,.8,.8,1)
+                Rectangle:
+                    pos:self.pos
+                    size:self.size 
+            ScrollView:
+                do_scroll_x: False
+                do_scroll_y: True
+                size_hint_y:1
+                bar_width:.5
+                bar_color: 0, 0, 0, .5 
+                effect_cls: "ScrollEffect"
+                scroll_type: ['bars', 'content']
+                GridLayout:
+                    id:rowtypeData
+                    height:self.minimum_height
+                    cols:1
+                    size_hint_y: None
+                    padding:2
+                    spacing:2
+                    padding_y:1
+                    RowBox:
+                        BoxLayout:
+                            size_hint_x:.4
+                            size_hint_y:1
+                            padding:3
+                            Image:
+                                source:'assets/test_images/A_test.jpg'
+                        BoxLayout:
+                            size_hint_x:.6
+                            size_hint_y:1
+                            padding:3
+                            TextInput:
+                                text:"A"
+                                markup:True
+                                multiline:False
+                                size_hint_x:1
+                                font_size:17
+                                bold:False
+                                multiline:True
+                                readonly:True
+                                readonly:True
+                                text_size: self.size_hint_x
+                                background_color: 0,0,0,0
+                                foreground_color: 0,0,0,1
+                    RowBox:
+                        BoxLayout:
+                            size_hint_x:.4
+                            size_hint_y:1
+                            padding:3
+                            Image:
+                                source:'assets/test_images/B_test.jpg'
+                        BoxLayout:
+                            size_hint_x:.6
+                            size_hint_y:1
+                            padding:3
+                            TextInput:
+                                id:txt_description
+                                text:"B"
+                                markup:True
+                                multiline:False
+                                size_hint_x:1
+                                font_size:17
+                                bold:False
+                                multiline:True
+                                readonly:True
+                                text_size: self.size_hint_x
+                                background_color: 0,0,0,0
+                                foreground_color: 0,0,0,1
+                    RowBox:
+                        BoxLayout:
+                            size_hint_x:.4
+                            size_hint_y:1
+                            padding:3
+                            Image:
+                                source:'assets/test_images/C_test.jpg'
+                        BoxLayout:
+                            size_hint_x:.6
+                            size_hint_y:1
+                            padding:3
+                            TextInput:
+                                id:txt_description
+                                text:"C"
+                                markup:True
+                                multiline:False
+                                size_hint_x:1
+                                font_size:17
+                                bold:False
+                                multiline:True
+                                readonly:True
+                                text_size: self.size_hint_x
+                                background_color: 0,0,0,0
+                                foreground_color: 0,0,0,1
+                    RowBox:
+                        BoxLayout:
+                            size_hint_x:.4
+                            size_hint_y:1
+                            padding:3
+                            Image:
+                                source:'assets/test_images/D_test.jpg'
+                        BoxLayout:
+                            size_hint_x:.6
+                            size_hint_y:1
+                            padding:3
+                            TextInput:
+                                id:txt_description
+                                text:"D"
+                                markup:True
+                                multiline:False
+                                size_hint_x:1
+                                font_size:17
+                                bold:False
+                                multiline:True
+                                readonly:True
+                                text_size: self.size_hint_x
+                                background_color: 0,0,0,0
+                                foreground_color: 0,0,0,1
+                    RowBox:
+                        BoxLayout:
+                            size_hint_x:.4
+                            size_hint_y:1
+                            padding:3
+                            Image:
+                                source:'assets/test_images/E_test.jpg'
+                        BoxLayout:
+                            size_hint_x:.6
+                            size_hint_y:1
+                            padding:3
+                            TextInput:
+                                id:txt_description
+                                text:"E"
+                                markup:True
+                                multiline:False
+                                size_hint_x:1
+                                font_size:17
+                                bold:False
+                                multiline:True
+                                readonly:True
+                                text_size: self.size_hint_x
+                                background_color: 0,0,0,0
+                                foreground_color: 0,0,0,1
+
+                    RowBox:
+                        BoxLayout:
+                            size_hint_x:.4
+                            size_hint_y:1
+                            padding:3
+                            Image:
+                                source:'assets/test_images/F_test.jpg'
+                        BoxLayout:
+                            size_hint_x:.6
+                            size_hint_y:1
+                            padding:3
+                            TextInput:
+                                id:txt_description
+                                text:"F"
+                                markup:True
+                                multiline:False
+                                size_hint_x:1
+                                font_size:17
+                                bold:False
+                                multiline:True
+                                readonly:True
+                                text_size: self.size_hint_x
+                                background_color: 0,0,0,0
+                                foreground_color: 0,0,0,1
+                    RowBox:
+                        BoxLayout:
+                            size_hint_x:.4
+                            size_hint_y:1
+                            padding:3
+                            Image:
+                                source:'assets/test_images/G_test.jpg'
+                        BoxLayout:
+                            size_hint_x:.6
+                            size_hint_y:1
+                            padding:3
+                            TextInput:
+                                id:txt_description
+                                text:"G"
+                                markup:True
+                                multiline:False
+                                size_hint_x:1
+                                font_size:17
+                                bold:False
+                                multiline:True
+                                readonly:True
+                                text_size: self.size_hint_x
+                                background_color: 0,0,0,0
+                                foreground_color: 0,0,0,1
+                    RowBox:
+                        BoxLayout:
+                            size_hint_x:.4
+                            size_hint_y:1
+                            padding:3
+                            Image:
+                                source:'assets/test_images/H_test.jpg'
+                        BoxLayout:
+                            size_hint_x:.6
+                            size_hint_y:1
+                            padding:3
+                            TextInput:
+                                id:txt_description
+                                text:"H"
+                                markup:True
+                                multiline:False
+                                size_hint_x:1
+                                font_size:17
+                                bold:False
+                                multiline:True
+                                readonly:True
+                                text_size: self.size_hint_x
+                                background_color: 0,0,0,0
+                                foreground_color: 0,0,0,1
+                    RowBox:
+                        BoxLayout:
+                            size_hint_x:.4
+                            size_hint_y:1
+                            padding:3
+                            Image:
+                                source:'assets/test_images/I_test.jpg'
+                        BoxLayout:
+                            size_hint_x:.6
+                            size_hint_y:1
+                            padding:3
+                            TextInput:
+                                id:txt_description
+                                text:"I"
+                                markup:True
+                                multiline:False
+                                size_hint_x:1
+                                font_size:17
+                                bold:False
+                                multiline:True
+                                readonly:True
+                                text_size: self.size_hint_x
+                                background_color: 0,0,0,0
+                                foreground_color: 0,0,0,1
+                    RowBox:
+                        BoxLayout:
+                            size_hint_x:.4
+                            size_hint_y:1
+                            padding:3
+                            Image:
+                                source:'assets/test_images/J_test.jpg'
+                        BoxLayout:
+                            size_hint_x:.6
+                            size_hint_y:1
+                            padding:3
+                            TextInput:
+                                id:txt_description
+                                text:"J"
+                                markup:True
+                                multiline:False
+                                size_hint_x:1
+                                font_size:17
+                                bold:False
+                                multiline:True
+                                readonly:True
+                                text_size: self.size_hint_x
+                                background_color: 0,0,0,0
+                                foreground_color: 0,0,0,1
+                    RowBox:
+                        BoxLayout:
+                            size_hint_x:.4
+                            size_hint_y:1
+                            padding:3
+                            Image:
+                                source:'assets/test_images/K_test.jpg'
+                        BoxLayout:
+                            size_hint_x:.6
+                            size_hint_y:1
+                            padding:3
+                            TextInput:
+                                id:txt_description
+                                text:"K"
+                                markup:True
+                                multiline:False
+                                size_hint_x:1
+                                font_size:17
+                                bold:False
+                                multiline:True
+                                readonly:True
+                                text_size: self.size_hint_x
+                                background_color: 0,0,0,0
+                                foreground_color: 0,0,0,1
+                    RowBox:
+                        BoxLayout:
+                            size_hint_x:.4
+                            size_hint_y:1
+                            padding:3
+                            Image:
+                                source:'assets/test_images/L_test.jpg'
+                        BoxLayout:
+                            size_hint_x:.6
+                            size_hint_y:1
+                            padding:3
+                            TextInput:
+                                id:txt_description
+                                text:"L"
+                                markup:True
+                                multiline:False
+                                size_hint_x:1
+                                font_size:17
+                                bold:False
+                                multiline:True
+                                readonly:True
+                                text_size: self.size_hint_x
+                                background_color: 0,0,0,0
+                                foreground_color: 0,0,0,1
+                    RowBox:
+                        BoxLayout:
+                            size_hint_x:.4
+                            size_hint_y:1
+                            padding:3
+                            Image:
+                                source:'assets/test_images/M_test.jpg'
+                        BoxLayout:
+                            size_hint_x:.6
+                            size_hint_y:1
+                            padding:3
+                            TextInput:
+                                id:txt_description
+                                text:"M"
+                                markup:True
+                                multiline:False
+                                size_hint_x:1
+                                font_size:17
+                                bold:False
+                                multiline:True
+                                readonly:True
+                                text_size: self.size_hint_x
+                                background_color: 0,0,0,0
+                                foreground_color: 0,0,0,1
+                    RowBox:
+                        BoxLayout:
+                            size_hint_x:.4
+                            size_hint_y:1
+                            padding:3
+                            Image:
+                                source:'assets/test_images/N_test.jpg'
+                        BoxLayout:
+                            size_hint_x:.6
+                            size_hint_y:1
+                            padding:3
+                            TextInput:
+                                id:txt_description
+                                text:"N"
+                                markup:True
+                                multiline:False
+                                size_hint_x:1
+                                font_size:17
+                                bold:False
+                                multiline:True
+                                readonly:True
+                                text_size: self.size_hint_x
+                                background_color: 0,0,0,0
+                                foreground_color: 0,0,0,1
+                    RowBox:
+                        BoxLayout:
+                            size_hint_x:.4
+                            size_hint_y:1
+                            padding:3
+                            Image:
+                                source:'assets/test_images/nothing_test.jpg'
+                        BoxLayout:
+                            size_hint_x:.6
+                            size_hint_y:1
+                            padding:3
+                            TextInput:
+                                id:txt_description
+                                text:"Nothing"
+                                markup:True
+                                multiline:False
+                                size_hint_x:1
+                                font_size:17
+                                bold:False
+                                multiline:True
+                                readonly:True
+                                text_size: self.size_hint_x
+                                background_color: 0,0,0,0
+                                foreground_color: 0,0,0,1
+                    RowBox:
+                        BoxLayout:
+                            size_hint_x:.4
+                            size_hint_y:1
+                            padding:3
+                            Image:
+                                source:'assets/test_images/O_test.jpg'
+                        BoxLayout:
+                            size_hint_x:.6
+                            size_hint_y:1
+                            padding:3
+                            TextInput:
+                                id:txt_description
+                                text:"O"
+                                markup:True
+                                multiline:False
+                                size_hint_x:1
+                                font_size:17
+                                bold:False
+                                multiline:True
+                                readonly:True
+                                text_size: self.size_hint_x
+                                background_color: 0,0,0,0
+                                foreground_color: 0,0,0,1
+                    RowBox:
+                        BoxLayout:
+                            size_hint_x:.4
+                            size_hint_y:1
+                            padding:3
+                            Image:
+                                source:'assets/test_images/P_test.jpg'
+                        BoxLayout:
+                            size_hint_x:.6
+                            size_hint_y:1
+                            padding:3
+                            TextInput:
+                                id:txt_description
+                                text:"P"
+                                markup:True
+                                multiline:False
+                                size_hint_x:1
+                                font_size:17
+                                bold:False
+                                multiline:True
+                                readonly:True
+                                text_size: self.size_hint_x
+                                background_color: 0,0,0,0
+                                foreground_color: 0,0,0,1
+                    RowBox:
+                        BoxLayout:
+                            size_hint_x:.4
+                            size_hint_y:1
+                            padding:3
+                            Image:
+                                source:'assets/test_images/Q_test.jpg'
+                        BoxLayout:
+                            size_hint_x:.6
+                            size_hint_y:1
+                            padding:3
+                            TextInput:
+                                id:txt_description
+                                text:"Q"
+                                markup:True
+                                multiline:False
+                                size_hint_x:1
+                                font_size:17
+                                bold:False
+                                multiline:True
+                                readonly:True
+                                text_size: self.size_hint_x
+                                background_color: 0,0,0,0
+                                foreground_color: 0,0,0,1
+                    RowBox:
+                        BoxLayout:
+                            size_hint_x:.4
+                            size_hint_y:1
+                            padding:3
+                            Image:
+                                source:'assets/test_images/R_test.jpg'
+                        BoxLayout:
+                            size_hint_x:.6
+                            size_hint_y:1
+                            padding:3
+                            TextInput:
+                                id:txt_description
+                                text:"R"
+                                markup:True
+                                multiline:False
+                                size_hint_x:1
+                                font_size:17
+                                bold:False
+                                multiline:True
+                                readonly:True
+                                text_size: self.size_hint_x
+                                background_color: 0,0,0,0
+                                foreground_color: 0,0,0,1
+                    RowBox:
+                        BoxLayout:
+                            size_hint_x:.4
+                            size_hint_y:1
+                            padding:3
+                            Image:
+                                source:'assets/test_images/S_test.jpg'
+                        BoxLayout:
+                            size_hint_x:.6
+                            size_hint_y:1
+                            padding:3
+                            TextInput:
+                                id:txt_description
+                                text:"S"
+                                markup:True
+                                multiline:False
+                                size_hint_x:1
+                                font_size:17
+                                bold:False
+                                multiline:True
+                                readonly:True
+                                text_size: self.size_hint_x
+                                background_color: 0,0,0,0
+                                foreground_color: 0,0,0,1
+                    RowBox:
+                        BoxLayout:
+                            size_hint_x:.4
+                            size_hint_y:1
+                            padding:3
+                            Image:
+                                source:'assets/test_images/space_test.jpg'
+                        BoxLayout:
+                            size_hint_x:.6
+                            size_hint_y:1
+                            padding:3
+                            TextInput:
+                                id:txt_description
+                                text:"Space"
+                                markup:True
+                                multiline:False
+                                size_hint_x:1
+                                font_size:17
+                                bold:False
+                                multiline:True
+                                readonly:True
+                                text_size: self.size_hint_x
+                                background_color: 0,0,0,0
+                                foreground_color: 0,0,0,1
+                    RowBox:
+                        BoxLayout:
+                            size_hint_x:.4
+                            size_hint_y:1
+                            padding:3
+                            Image:
+                                source:'assets/test_images/T_test.jpg'
+                        BoxLayout:
+                            size_hint_x:.6
+                            size_hint_y:1
+                            padding:3
+                            TextInput:
+                                id:txt_description
+                                text:"T"
+                                markup:True
+                                multiline:False
+                                size_hint_x:1
+                                font_size:17
+                                bold:False
+                                multiline:True
+                                readonly:True
+                                text_size: self.size_hint_x
+                                background_color: 0,0,0,0
+                                foreground_color: 0,0,0,1
+                    RowBox:
+                        BoxLayout:
+                            size_hint_x:.4
+                            size_hint_y:1
+                            padding:3
+                            Image:
+                                source:'assets/test_images/U_test.jpg'
+                        BoxLayout:
+                            size_hint_x:.6
+                            size_hint_y:1
+                            padding:3
+                            TextInput:
+                                id:txt_description
+                                text:"U"
+                                markup:True
+                                multiline:False
+                                size_hint_x:1
+                                font_size:17
+                                bold:False
+                                multiline:True
+                                readonly:True
+                                text_size: self.size_hint_x
+                                background_color: 0,0,0,0
+                                foreground_color: 0,0,0,1
+                    RowBox:
+                        BoxLayout:
+                            size_hint_x:.4
+                            size_hint_y:1
+                            padding:3
+                            Image:
+                                source:'assets/test_images/V_test.jpg'
+                        BoxLayout:
+                            size_hint_x:.6
+                            size_hint_y:1
+                            padding:3
+                            TextInput:
+                                id:txt_description
+                                text:"V"
+                                markup:True
+                                multiline:False
+                                size_hint_x:1
+                                font_size:17
+                                bold:False
+                                multiline:True
+                                readonly:True
+                                text_size: self.size_hint_x
+                                background_color: 0,0,0,0
+                                foreground_color: 0,0,0,1
+                    RowBox:
+                        BoxLayout:
+                            size_hint_x:.4
+                            size_hint_y:1
+                            padding:3
+                            Image:
+                                source:'assets/test_images/W_test.jpg'
+                        BoxLayout:
+                            size_hint_x:.6
+                            size_hint_y:1
+                            padding:3
+                            TextInput:
+                                id:txt_description
+                                text:"W"
+                                markup:True
+                                multiline:False
+                                size_hint_x:1
+                                font_size:17
+                                bold:False
+                                multiline:True
+                                readonly:True
+                                text_size: self.size_hint_x
+                                background_color: 0,0,0,0
+                                foreground_color: 0,0,0,1
+                    RowBox:
+                        BoxLayout:
+                            size_hint_x:.4
+                            size_hint_y:1
+                            padding:3
+                            Image:
+                                source:'assets/test_images/X_test.jpg'
+                        BoxLayout:
+                            size_hint_x:.6
+                            size_hint_y:1
+                            padding:3
+                            TextInput:
+                                id:txt_description
+                                text:"X"
+                                markup:True
+                                multiline:False
+                                size_hint_x:1
+                                font_size:17
+                                bold:False
+                                multiline:True
+                                readonly:True
+                                text_size: self.size_hint_x
+                                background_color: 0,0,0,0
+                                foreground_color: 0,0,0,1
+                    RowBox:
+                        BoxLayout:
+                            size_hint_x:.4
+                            size_hint_y:1
+                            padding:3
+                            Image:
+                                source:'assets/test_images/Y_test.jpg'
+                        BoxLayout:
+                            size_hint_x:.6
+                            size_hint_y:1
+                            padding:3
+                            TextInput:
+                                id:txt_description
+                                text:"Y"
+                                markup:True
+                                multiline:False
+                                size_hint_x:1
+                                font_size:17
+                                bold:False
+                                multiline:True
+                                readonly:True
+                                text_size: self.size_hint_x
+                                background_color: 0,0,0,0
+                                foreground_color: 0,0,0,1
+                    RowBox:
+                        BoxLayout:
+                            size_hint_x:.4
+                            size_hint_y:1
+                            padding:3
+                            Image:
+                                source:'assets/test_images/Z_test.jpg'
+                        BoxLayout:
+                            size_hint_x:.6
+                            size_hint_y:1
+                            padding:3
+                            TextInput:
+                                id:txt_description
+                                text:"Z"
+                                markup:True
+                                multiline:False
+                                size_hint_x:1
+                                font_size:17
+                                bold:False
+                                multiline:True
+                                readonly:True
+                                text_size: self.size_hint_x
+                                background_color: 0,0,0,0
+                                foreground_color: 0,0,0,1
+                    
+
+            
+    
+    
+    BoxLayout:
+        size_hint_x:1
+        size_hint_y:.10
+# description form 
+<PlayScreen>:
+    id:play_screen #from this size can be changed
+    size_hint_x:1
+    size_hint_y:1
+    orientation:'vertical'
+    canvas.before:
+        Color:
+            rgba:(1,1,1,1)
+        Rectangle:
+            pos:self.pos
+            size:self.size
+    FormBox:
+        id:headings
+        size_hint_x:1
+        size_hint_y:.15
+        BoxLayout:
+            size_hint_x:None
+            width:50
+            padding:2
+            Button: 
+                background_normal:'assets/bg2.png'
+                size_hint_x:.5
+                on_press:root.btn_back_click()
+        Label:
+            id:lbl_header
+            text:"" 
+            color:(1,1,1,1)
+            font_size:20
+            bold:True
+            # height:50
+            size_hint_y:1
+        BoxLayout:
+            size_hint_x:None
+            width:20
+            padding:5
+    BoxLayout:
+        size_hint_x:1
+        size_hint_y:1
+        padding:2
+        orientation:'vertical'
+        canvas.before:
+            Color:
+                rgba:(1,1,1,1)
+            Rectangle:
+                pos:self.pos
+                size:self.size
+        BackgroundBox:
+            id:main_area
+            size_hint_x:1
+            size_hint_y:1
+            orientation:'vertical'
+            padding:3
+            spacing:5   
+            canvas.before:
+                Color:
+                    rgba:(.85,.85,.85,.95)
+                Rectangle:
+                    pos:self.pos
+                    size:self.size 
+            BoxLayout:
+                size_hint_x:1
+                size_hint_y:.15
+                orientation:'vertical'
+                padding:3  
+                canvas.before:
+                    Color:
+                        rgba:(1,1,1,1)
+                    RoundedRectangle:
+                        pos:self.pos
+                        size:self.size 
+                        radius:[10]
+                
+                Label:
+                    id:lbl_status
+                    text:''
+                    color:(0,0,0,1)
+            BoxLayout:
+                size_hint_x:1
+                size_hint_y:.15
+                orientation:'vertical'
+                padding:3  
+                canvas.before:
+                    Color:
+                        rgba:(1,1,1,1)
+                    RoundedRectangle:
+                        pos:self.pos
+                        size:self.size 
+                        radius:[10]
+                Label:
+                    id:lbl_description
+                    text:''
+                    color:(0,0,0,1)
+            BoxLayout:
+                id:pic_box
+                size_hint_x:1
+                size_hint_y:.7
+                orientation:'vertical'
+                padding:5  
+                canvas.before:
+                    Color:
+                        rgba:(1,1,1,1)
+                    RoundedRectangle:
+                        pos:self.pos
+                        size:self.size 
+                        radius:[5]
+                # Camera:
+                #     id: camera
+                #     resolution: (640, 480)
+                #     play: False
+                Image:
+                    id:img_box
+                    source:'img.jpg'
+                
+
+    BoxLayout:
+        size_hint_x:1
+        size_hint_y:.10
+    
+            
+
+# Choice window
+<ChoiceForm>:
+    id:contact_window #from this size can be changed
+    size_hint_x:1
+    size_hint_y:1
+    orientation:'vertical'
+    canvas.before:
+        Color:
+            rgba:(1,1,1,1)
+        Rectangle:
+            pos:self.pos
+            size:self.size
+    
+    FormBox:
+        id:headings
+        size_hint_x:1
+        size_hint_y:.15
+        BoxLayout:
+            size_hint_x:None
+            width:50
+            padding:2
+            Button: 
+                background_normal:'assets/bg2.png'
+                size_hint_x:.5
+                on_press:root.btn_back_click()
+        Label:
+            id: lbl_header
+            color:(1,1,1,1)
+            font_size:20
+            bold:True
+            # height:50
+            size_hint_y:1
+        BoxLayout:
+            size_hint_x:None
+            width:20
+            padding:5
+    BoxLayout:
+        size_hint_x:1
+        size_hint_y:1
+        padding:2
+        orientation:'vertical'
+        canvas.before:
+            Color:
+                rgba:(1,1,1,1)
+            Rectangle:
+                pos:self.pos
+                size:self.size
+        BackgroundBox:
+            id:main_area
+            size_hint_x:1
+            size_hint_y:1
+            orientation:'vertical'
+            padding:3
+            spacing:5   
+            canvas.before:
+                Color:
+                    rgba:(.85,.85,.85,.95)
+                Rectangle:
+                    pos:self.pos
+                    size:self.size 
+            ScrollView:
+                do_scroll_x: False
+                do_scroll_y: True
+                size_hint_y:1
+                bar_width:.5
+                bar_color: 0, 0, 0, .5 
+                effect_cls: "ScrollEffect"
+                scroll_type: ['bars', 'content']
+                GridLayout:
+                    id:rowtypeData
+                    height:self.minimum_height
+                    cols:1
+                    size_hint_y: None
+                    padding:2
+                    spacing:2
+                    padding_y:1
+                    
+                    DesButton:
+                        on_press:root.play_screen_window(1)
+                        NumCount:
+                            text:'1'
+                        Description:
+                            id:level_1
+                            text:''
+                    DesButton:
+                        on_press:root.play_screen_window(2)
+                        NumCount:
+                            text:'2'
+                        Description:
+                            id:level_2
+                            text:''
+                    DesButton:
+                        on_press:root.play_screen_window(3)
+                        NumCount:
+                            text:'3'
+                        Description:
+                            id:level_3
+                            text:''
+                    DesButton:
+                        on_press:root.play_screen_window(4)
+                        NumCount:
+                            text:'4'
+                        Description:
+                            id:level_4
+                            text:''
+                    DesButton:
+                        on_press:root.play_screen_window(5)
+                        NumCount:
+                            text:'5'
+                        Description:
+                            id:level_5
+                            text:''
+         
+    BoxLayout:
+        size_hint_x:1
+        size_hint_y:.10
+
+# Mode form
+<ModeSelection>:
+    id:modes_window #from this size can be changed
+    size_hint_x:1
+    size_hint_y:1
+    orientation:'vertical'
+    canvas.before:
+        Color:
+            rgba:(1,1,1,1)
+        Rectangle:
+            pos:self.pos
+            size:self.size
+    
+    FormBox:
+        id:headings
+        size_hint_x:1
+        size_hint_y:.15
+        BoxLayout:
+            size_hint_x:None
+            width:50
+            padding:2
+            Button: 
+                background_normal:'assets/bg2.png'
+                size_hint_x:.5
+                on_press:root.btn_back_click()
+        Label:
+            text:"Select Mode" 
+            color:(1,1,1,1)
+            font_size:20
+            bold:True
+            # height:50
+            size_hint_y:1
+        BoxLayout:
+            size_hint_x:None
+            width:50
+            padding:2
+    BoxLayout:
+        size_hint_x:1
+        size_hint_y:1
+        padding:2
+        orientation:'vertical'
+
+        BackgroundBox:
+            id:main_area
+            size_hint_x:1
+            size_hint_y:1
+            orientation:'vertical'
+            padding:3
+            spacing:5    
+            RoundedButton:
+                text:"Easy"
+                size_hint_y:.5
+                on_press:root.choicewindow("Easy")
+            RoundedButton:
+                text:"Medium"
+                size_hint_y:.5
+                on_press:root.choicewindow("Medium")
+            RoundedButton:
+                text:"Expert"
+                size_hint_y:.5
+                on_press:root.choicewindow("Expert")
+    BoxLayout:
+        size_hint_x:1
+        size_hint_y:.10
+            
+ 
+                

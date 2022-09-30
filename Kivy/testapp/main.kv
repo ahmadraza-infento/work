@@ -1,0 +1,29 @@
+MDBoxLayout:
+    orientation: 'vertical'
+    id: box
+    MDToolbar:
+        title: 'SampleApp'
+        pos_hint: {'top': 1}
+
+    MDLabel:
+        id  : lbl
+        text: "Your Status"
+        size_hint_x: .9
+        pos_hint: {'center_x': .5} 
+    MDTextField:
+        id: listinput
+        hint_text: 'Add Item'
+        mode: 'rectangle'
+        size_hint_x: .9
+        pos_hint: {'center_x': .5} 
+        text_validate_unfocus: False
+        on_text_validate: app.add_item(listinput.text)
+    
+    MDIconButton:
+        icon        : "language-python"
+        pos_hint    : {"center_x": .5, "center_y": .5}
+        on_release  : app.button_pressed()
+
+    ScrollView:
+        MDList:
+            id: listcontainer

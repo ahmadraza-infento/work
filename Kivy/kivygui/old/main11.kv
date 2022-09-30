@@ -1,0 +1,349 @@
+WindowManager:
+    Login:
+    MainPage:
+    Setting:
+    MotivationTask:
+
+<Login>
+    name:'login'
+    canvas.before:
+        Rectangle:
+            size: self.size
+            pos: self.pos
+            source: "Fitness-Day-.jpg"
+
+    Screen:
+        size:root.height,root.width
+
+        MDLabel:
+            text:"Explore the Fitness"
+            font_size: 30
+            color: (66/255,245/255,227/255,1)
+            pos_hint:{'x':0,'y':0.35}
+            halign: 'center'
+            valign: 'center'
+            bold: True
+            outline_color: (0,0,0)
+            outline_width: 1
+
+        MDTextFieldRound:
+            id:user
+            hint_text:"username"
+            icon_right:"account"
+            size_hint_x:None
+            width: 200
+            font_size: 25
+            pos_hint: {'center_x':0.5, 'center_y':0.65}
+
+        MDTextFieldRound:
+            id:Pass
+            hint_text:"password"
+            icon_right:"eye-off"
+            size_hint_x:None
+            width: 200
+            font_size: 25
+            pos_hint: {'center_x':0.5, 'center_y':0.55}
+            password:True
+
+        MDRoundFlatButton:
+            text:"Login"
+            font_size:18
+            width: 100
+            pos_hint: {'center_x':0.5, 'center_y':0.45}
+            theme_text_color: "Custom"
+            text_color: 0, 0, 0, 1
+            on_release:
+                if user.text == 'm' and Pass.text=='m':\
+                root.manager.current='mainpage'
+
+        MDLabel:
+            id:approved
+            text:""
+            font_size:22
+            pos_hint: {'center_x':0.7, 'center_y':0.3}
+
+            
+
+<MainPage>
+    name:'mainpage'
+
+    #:import get_color_from_hex kivy.utils.get_color_from_hex
+    MDScreen:
+        ScrollView:
+            do_scroll_x: False
+            do_scroll_y: True
+            BoxLayout:
+                orientation: 'vertical'
+                padding: "10dp"
+                spacing: "15dp"
+                size_hint_y: None
+                height: self.minimum_height
+
+                MDRoundFlatButton:
+                    text:"Setting"
+                    font_size:18
+                    width: 100
+                    pos_hint: {'center_x':0.5, 'center_y':0.45}
+                    theme_text_color: "Custom"
+                    text_color: 0, 0, 0, 1
+                    on_release: root.load_setting()
+                MDRoundFlatButton:
+                    text:"Back"
+                    font_size:18
+                    width: 100
+                    pos_hint: {'center_x':0.5, 'center_y':0.55}
+                    theme_text_color: "Custom"
+                    text_color: 0, 0, 0, 1
+                    on_release:
+                        root.manager.current='login'
+
+
+
+                MDCard:
+                    orientation: "vertical"
+                    padding: "10dp"
+                    spacing: "5dp"
+                    size_hint: None, None
+                    size: "250dp",  self.minimum_height
+                    pos_hint: {"center_x": .5, 'top': 1}
+                    line_color: 0.2, 0.2, 0.2, 0.3
+
+                    MDLabel:
+                        text: "Movement Anaylsis"
+                        theme_text_color: "Secondary"
+                        size_hint_y: None
+                        height: self.texture_size[1]
+
+                    MDSeparator:
+                        height: "2dp"
+
+                    MDLabel:
+                        id          : notification_bar
+                        text        : ""
+                        size_hint_y : None
+                        height      : "20dp"
+                        font_size   : "12dp"
+                        markup      : True
+
+                    GridLayout:
+                        cols: 3
+                        orientation: "tb-lr"
+                        size_hint_y: None
+                        height: self.minimum_height
+                        padding: "5dp"
+                        spacing: "5dp"
+
+                    MDIconButton:
+                        icon        : 'location-enter'
+                        on_release  : root.on_check_in() 
+                        # halign: 'center'
+                    MDLabel:
+                        text        : "Check-in"
+                        font_size   : "12dp"
+                        # halign: 'center'
+
+                    MDIconButton:
+                        icon        : 'location-exit'
+                        on_release  : root.on_check_out() 
+                        # halign: 'center'
+                    MDLabel:
+                        text        : "Check-out"
+                        font_size   : "12dp"
+                        # halign: 'center'
+
+                    MDIconButton:
+                        icon: 'alarm'
+                        # halign: 'center'
+                    MDLabel:
+                        text: "Notifications on"
+                        font_size: "10dp"
+                        # halign: 'center'
+<Setting>
+    name:'setting'
+    MDScreen:
+
+        MDCard:
+            orientation: "vertical"
+            padding: "10dp"
+            spacing: "5dp"
+            size_hint: None, None
+            size: "250dp",  self.minimum_height
+            pos_hint: {"center_x": .5, 'top': 1}
+            line_color: 0.2, 0.2, 0.2, 0.3
+
+            MDLabel:
+                text: "Settings"
+                theme_text_color: "Secondary"
+                size_hint_y: None
+                height: self.texture_size[1]
+
+            MDSeparator:
+                height: "2dp"
+
+            GridLayout:
+                cols: 2
+                orientation: "lr-tb"
+                size_hint_y: None
+                height: self.minimum_height
+                padding: "5dp"
+                spacing: "5dp"
+
+                MDLabel:
+                    text: 'Name:'
+                    font_size: "12dp"
+                MDTextField:
+                    id          : name
+                    font_size   : "12dp"
+
+                MDLabel:
+                    text: 'Age:'
+                    font_size: "12dp"
+                MDTextField:
+                    id          : age
+                    font_size   : "12dp"
+
+                MDLabel:
+                    text: 'Weight [kg]:'
+                    font_size: "12dp"
+                MDTextField:
+                    id          : weight
+                    font_size   : "12dp"
+
+                MDLabel:
+                    text: "Height [m]:"
+                    font_size: "12dp"
+                MDTextField:
+                    id          : height
+                    font_size   : "12dp"
+
+                MDLabel:
+                    text: "Job position:"
+                    font_size: "12dp"
+                MDTextField:
+                    id          : position
+                    font_size   : "12dp"
+                
+                MDRoundFlatButton:
+                    id          : btn_action
+                    text        : "Save"
+                    font_size   : 18
+                    theme_text_color: "Custom"
+                    text_color  : 0, 0, 0, 1
+                    on_release  : root.save_records(self.text)
+                
+                MDRoundFlatButton:
+                    text        : "View"
+                    font_size:18
+                    theme_text_color: "Custom"
+                    text_color: 0, 0, 0, 1
+                    on_release: root.load()
+
+                MDRoundFlatButton:
+                    text:"Back"
+                    font_size:18
+                    theme_text_color: "Custom"
+                    text_color: 0, 0, 0, 1
+                    on_release: root.clear()
+                
+            GridLayout:
+                cols: 1
+                orientation: "lr-tb"
+                size_hint_y: None
+                height: self.minimum_height
+                padding: "5dp"
+                spacing: "5dp"
+                
+                MDRoundFlatButton:
+                    text:"Motivation Task"
+                    font_size:10
+                    
+                    theme_text_color: "Custom"
+                    text_color: 0, 0, 0, 1
+                    on_release:
+                        root.manager.current='motivation task'
+
+<MotivationTask>
+    name:'motivation task'
+    MDScreen:
+
+        MDCard:
+            orientation: "vertical"
+            padding: "10dp"
+            spacing: "10dp"
+            size_hint: None, None
+            size: "250dp",  self.minimum_height
+            pos_hint: {"center_x": .5, 'top': 1}
+            line_color: 0.2, 0.2, 0.2, 0.3
+
+            MDLabel:
+                text: "Motivation Tasks"
+                theme_text_color: "Secondary"
+                size_hint_y: None
+                height: self.texture_size[1]
+
+            MDSeparator:
+                height: "2dp"
+
+            GridLayout:
+                cols: 2
+                orientation: "lr-tb"
+                spacing: "4dp"
+                size_hint_y: None
+                height: self.minimum_height
+
+                MDCheckbox:
+                    size_hint: None, None
+                    size: "30dp", motivation_text.height
+                    pos_hint: {'center_x': .5, 'center_y': .55}
+                MDLabel:
+                    id: motivation_text
+                    text: "you should running now"
+                    font_size: "10dp"
+                    size: self.texture_size
+
+                MDCheckbox:
+                    size_hint: None, None
+                    size: "30dp", motivation_text.height
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+                MDLabel:
+                    id: motivation_text
+                    text: "you should walking now"
+                    font_size: "10dp"
+                    size: self.texture_size
+
+                MDCheckbox:
+                    size_hint: None, None
+                    size: "30dp", motivation_text.height
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+                MDLabel:
+                    id: motivation_text
+                    text: "you should running for 30 min now"
+                    font_size: "10dp"
+                    size: self.texture_size
+
+                MDCheckbox:
+                    size_hint: None, None
+                    size: "30dp", motivation_text.height
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+                MDLabel:
+                    id: motivation_text
+                    text: "you should walking for 1 hour now"
+                    font_size: "10dp"
+                    size: self.texture_size
+
+            #CheckAndTask:
+            #CheckAndTask:
+            #CheckAndTask:
+            #CheckAndTask:
+
+                MDRectangleFlatButton:
+                    text: "Remind me"
+                    pos_hint: {"center_x": .5}
+
+
+
+
+
+
+
+
